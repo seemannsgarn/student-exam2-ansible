@@ -1,11 +1,11 @@
-#!groovy
-// Check ub1 properties
+#!#!groovy
+
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent { 
+    agent {
         label 'slave-1'
-        }
+    }
     triggers {pollSCM('* * * * *')}
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
@@ -18,7 +18,7 @@ pipeline {
                     sh 'pwd'
                     sh 'ls -lh'
                     sh 'ansible --version'
-                }
             }
         }
     }
+}
