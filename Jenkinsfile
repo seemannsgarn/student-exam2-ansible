@@ -17,7 +17,7 @@ pipeline {
                 ansiblePlaybook( 
                 playbook: 'playbooks/ping.yml',
                 inventory: 'hosts.ini', 
-                credentialsId: 'ssh-key-main'
+                credentialsId: 'ssh-key-main')
             }
         }
     }
