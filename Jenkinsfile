@@ -15,7 +15,7 @@ pipeline {
        stage("check connect") {
             steps {
                 echo " ============== check connect =================="
-                    sh 'ansible -i hosts all -m ping'
+                    sh 'ansible all -m ping'
             }
         }
     }
