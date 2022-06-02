@@ -12,10 +12,13 @@ pipeline {
         timestamps()
     }
     stages {
-       stage("check connect") {
+       stage("ansible") {
             steps {
-                echo " ============== check connect =================="
-                    sh 'ansible all -m ping'
+                ansiblePlaybook( 
+                playbook: 'playbooks/ping.yml',
+                inventory: 'hosts.ini', 
+                credentialsId: 'ssh-key-main'
+                }
             }
         }
     }
