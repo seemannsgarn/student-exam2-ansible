@@ -12,7 +12,7 @@ pipeline {
         timestamps()
     }
     stages {
-       stage("ansible") {
+        stage("ansible") {
             steps {
                 ansiblePlaybook( 
                 playbook: 'playbooks/ping.yml',
@@ -20,5 +20,13 @@ pipeline {
                 credentialsId: 'ssh-key-main')
             }
         }
+        stage("check"){
+            steps {
+                echo "###################################"
+                echo "#                OK               #"
+                echo "###################################"
+            }
+        }
+    
     }
 }
