@@ -18,7 +18,6 @@ pipeline {
                 playbook: 'playbooks/ping.yml',
                 inventory: 'hosts.ini', 
                 credentialsId: 'ssh-key-main'
-                }
             }
         }
     }
