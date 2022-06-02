@@ -12,12 +12,10 @@ pipeline {
         timestamps()
     }
     stages {
-       stage("ansible ver") {
+       stage("check connect") {
             steps {
-                echo " ============== ansible ver =================="
-                    sh 'pwd'
-                    sh 'ls -lh'
-                    sh 'ansible --version'
+                echo " ============== check connect =================="
+                    sh 'ansible -i hosts all -m ping'
             }
         }
     }
