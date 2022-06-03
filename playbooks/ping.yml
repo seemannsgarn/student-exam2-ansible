@@ -9,3 +9,8 @@
 
   - name: Check release
     shell: lsb_release -a
+    registry: result
+
+  - name: print
+    debug: 
+      var: result
