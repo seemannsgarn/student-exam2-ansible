@@ -1,0 +1,31 @@
+---
+# tasks file for example_apache_deploy
+- block: # ========= block for redhat =========
+    - name: install apache web server
+      yum: name=httpd state=latest
+    - name: start web server
+      service: name=httpd state=started enabled=yes
+  when: ansible_os_family == "RedHat"
+
+- block: # ========= block for debian =========
+   - name: install apache web server
+      yum: name=httpd state=latest
+    - name: start web server
+      service: name=apache2 state=started enabled=yes
+  when: ansible_os_family == "Debian"
+
+- name: generate index.html 
+  templates: src=index.j2 dest={{ destination }}/index.html mode=0555
+  notify: 
+    - restart apache redhat
+    - restart apache debian
+
+- name: copy homepage file to wev server
+  copy: src={{ item }} dest={{ destination }} mode=0555
+  loop:
+    - "file1.png"
+    - "file2.png"
+    - "file3.png"
+  notify:
+    - restart apache redhat
+    - restart apache debian

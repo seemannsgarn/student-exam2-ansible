@@ -1,0 +1,3 @@
+---
+# defaults file for example_apache_deploy
+destination_folder: /var/www/html
