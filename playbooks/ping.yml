@@ -6,3 +6,6 @@
   tasks:
   - name: Ping all servers
     ping:
+
+  - name: Check release
+    shell: lsb_release -a
