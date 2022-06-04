@@ -1,7 +1,5 @@
 ---
-- name: install docker
-  hosts: all
+- hosts: all
   become: yes
-
   roles:
-    - { role: install_docker, when: ansible_system == 'Linux' }
+    - role: install_docker
