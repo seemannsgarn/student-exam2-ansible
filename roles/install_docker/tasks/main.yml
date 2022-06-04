@@ -1,14 +1,17 @@
 ---
 # tasks file for install_docker
-- name: ensure repository key is installed
+- name: Add Docker GPG apt Key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
-- name: ensure docker registry is available
-  apt_repository: repo='deb https://download.docker.com/linux/ubuntu bionic stable' state=present
+- name: Add Docker Repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+      state: present
 
-- name: ensure docker and dependencies are installed
-  apt: name=docker-ce update_cache=yes
-    
-- service: name=docker state=restarted
+- name: Update apt and install docker-ce
+    apt:
+      name: docker-ce
+      state: latest
+      update_cache: true
