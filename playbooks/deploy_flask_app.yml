@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: install docker
+      import_role:
+        name: install_docker
+    
+    - name: deploy flask app 1
+      import_role:
+        name: deploy_flask_app
+      vars:
+        container_port: 5000
+
+    - name: deploy flask app 2
+      import_role:
+        name: deploy_flask_app
+      vars:
+        container_port: 5001
+
+    - name: deploy flask app 3
+      import_role:
+        name: deploy_flask_app
+      vars:
+        container_port: 5002

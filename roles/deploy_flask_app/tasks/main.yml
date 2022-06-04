@@ -2,14 +2,10 @@
 # tasks file for deploy_flask_app
 - name: Create app container and connect to network
   docker_container:
-    name: {{ default_container_name }}{{ item }}
+    name: {{ default_container_name }}{{ container_port }}
     image: {{ default_container_image }}
     state: started
     networks:
       - name: "{{ docker_network_name }}"
     ports: 
-      - "{{ item }}:5000"
-    loop:
-      - "5000"
-      - "5001"
-      - "5002"
+      - "{{ container_port }}:5000"
