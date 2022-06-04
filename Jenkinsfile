@@ -15,7 +15,7 @@ pipeline {
         stage("ansible") {
             steps {
                 ansiblePlaybook( 
-                playbook: 'playbooks/ping.yml',
+                playbook: 'playbooks/install_docker.yml',
                 inventory: 'hosts.ini', 
                 credentialsId: 'ssh-key-ansible')
             }
