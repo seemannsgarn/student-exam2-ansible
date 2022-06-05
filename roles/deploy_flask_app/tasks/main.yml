@@ -4,6 +4,6 @@
   docker_container:
     name: "container{{ item }}"
     recreate: yes
-    image: {{ default_container_image }}
+    image: mustafaevsl/epam-flask-app:latest
     command: sleep 1d
   with_sequence: count=3
