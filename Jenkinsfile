@@ -15,7 +15,7 @@ pipeline {
         stage("ansible") {
             steps {
                 ansiblePlaybook( 
-                playbook: 'playbooks/install_docker.yml',
+                playbook: 'playbooks/deploy_flask_app.yml',
                 inventory: 'hosts.ini', 
                 credentialsId: 'ssh-key-ansible')
             }
