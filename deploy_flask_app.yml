@@ -3,9 +3,9 @@
   become: yes
   roles:
     - install docker
-    - deploy flask app 1
+    - role: deploy flask app 1
       vars:
-        container_port: 5000
+          container_port: 5000
 
     # - name: deploy flask app 2
     #   import_role:
