@@ -4,7 +4,8 @@
   apt: name=python3 state=latest
 
 - name: Install docker-py
-  apt: name=docker-py state=latest
+  pip: 
+    name: docker-py
 
 - name: Add Docker GPG apt Key
   apt_key:
