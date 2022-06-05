@@ -1,11 +1,9 @@
 ---
 # tasks file for deploy_flask_app
-- name: Create app container and connect to network
+- name: Start 3 load-balanced containers
   docker_container:
-    name: {{ default_container_name }}
+    name: "container{{ item }}"
+    recreate: yes
     image: {{ default_container_image }}
-    state: started
-    networks:
-      - name: "{{ docker_network_name }}"
-    ports: 
-      - "{{ container_port }}:5000"
+    command: sleep 1d
+  with_sequence: count=3
