@@ -9,7 +9,7 @@
 
 - block: # ========= block for debian =========
    - name: install apache web server
-      yum: name=httpd state=latest
+      apt: name=apache2 state=latest
     - name: start web server
       service: name=apache2 state=started enabled=yes
   when: ansible_os_family == "Debian"
