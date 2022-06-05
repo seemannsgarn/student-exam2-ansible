@@ -1,10 +1,10 @@
 ---
 # tasks file for install_docker
 - name: Install python3
-  apt: 
-    pkg:
-      - python3
-      - pip3
+  apt: name=python3 state=latest
+
+- name: Install pip3
+  apt: name=pip3 state=latest
 
 - name: Install docker-py
   pip: 
