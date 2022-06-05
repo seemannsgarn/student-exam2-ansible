@@ -1,6 +1,6 @@
 ---
 # defaults file for deploy_flask_app
-container_count: 3
-default_container_name: my-flask-app-port-
-default_container_image: mustafaevsl/epam-flask-app
+#container_count: 3
+#default_container_name: my-flask-app-port-
+default_container_image: mustafaevsl/epam-flask-app:latest
 docker_network_name: nginx-balancer
