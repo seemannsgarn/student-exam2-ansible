@@ -2,8 +2,8 @@
 - hosts: all
   become: yes
   roles:
-    - install docker
-    - role: deploy flask app 1
+    - install_docker
+    - role: deploy_flask_app
       vars:
           container_port: 5000
 
