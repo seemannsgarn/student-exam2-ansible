@@ -2,8 +2,16 @@
 # tasks file for deploy_flask_app
 - name: Start 3 load-balanced containers
   docker_container:
-    name: "container{{ item }}"
+    name: "app-{{ item }}"
     recreate: yes
-    image: mustafaevsl/epam-flask-app:latest
+    image: {{ default_container_image }}
     command: sleep 1d
+  with_sequence: count=3
+
+- name: Create a network and connect containers
+  docker_network:
+    name: balancer_subnet
+    connected: 
+      - app-{{ item }}
+    appends: yes
   with_sequence: count=3
