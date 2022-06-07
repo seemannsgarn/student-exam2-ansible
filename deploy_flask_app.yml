@@ -3,19 +3,8 @@
   become: yes
   roles:
     - install_docker
-    - role: deploy_flask_app
-      vars:
-        default_container_name: epamFlaskAPP1
-        container_port: 5000
-
-    # - name: deploy flask app 2
-    #   import_role:
-    #     name: deploy_flask_app
-    #   vars:
-    #     container_port: 5001
-
-    # - name: deploy flask app 3
-    #   import_role:
-    #     name: deploy_flask_app
-    #   vars:
-    #     container_port: 5002
+    - deploy_flask_app
+    # - role: deploy_flask_app
+      # vars:
+      #   default_container_name: epamFlaskAPP1
+      #   container_port: 5000

@@ -4,7 +4,7 @@
   docker_container:
     name: "app-{{ item }}"
     recreate: yes
-    image: {{ default_container_image }}
+    image: "{{ default_container_image }}"
     command: sleep 1d
   with_sequence: count=3
 
