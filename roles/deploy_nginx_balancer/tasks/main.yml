@@ -8,11 +8,8 @@
 
 - name: Copy file with owner and permissions
   ansible.builtin.copy:
-    src: defaults.conf
+    src: templates/defaults.conf
     dest: /etc/nginx/conf.d/defaults.conf
-    owner: root
-    group: root
-    mode: '0644'
 
 - name: Generate config file from jinja
   template: 
