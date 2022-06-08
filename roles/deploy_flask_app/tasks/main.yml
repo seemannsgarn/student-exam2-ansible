@@ -5,13 +5,16 @@
     name: "app-{{ item }}"
     recreate: yes
     image: "{{ default_container_image }}"
-    command: sleep 1d
+    networks:
+      - name: "{{ docker_network_name }}"
+    ports: 
+      - "5000:5000"
   with_sequence: count=3
 
-- name: Create a network and connect containers
-  docker_network:
-    name: balancer_subnet
-    connected: 
-      - app-{{ item }}
-    appends: yes
-  with_sequence: count=3
+# - name: Create a network and connect containers
+#   docker_network:
+#     name: "{{ docker_network_name }}"
+#     connected: 
+#       - app-{{ item }}
+#     appends: yes
+#   with_sequence: count=3

@@ -4,7 +4,3 @@
   roles:
     - install_docker
     - deploy_flask_app
-    # - role: deploy_flask_app
-      # vars:
-      #   default_container_name: epamFlaskAPP1
-      #   container_port: 5000
