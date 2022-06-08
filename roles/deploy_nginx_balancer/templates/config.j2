@@ -1,22 +1,13 @@
-http {
+upstream myapp1 {
+    server app-1:5000;
+    server app-2:5000;
+    server app-3:5000;
+}
 
-    # List of application servers
-    upstream api_servers {
-        server app-5000:5000;
-        server app-5001:5001;
-        server app-5002:5002;
-    }
+server {
+    listen 5100;
 
-    # Configuration for the server
-    server {
-
-        # Running port
-        listen [::]:5100;
-        listen 5100;
-
-        # Proxying the connections
-        location / {
-            proxy_pass         http://api_servers;
+    location / {
+      proxy_pass http://myapp1;
         }
-    }
 }
