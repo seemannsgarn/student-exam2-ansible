@@ -1,14 +1,24 @@
-upstream loadbalancer {
-    server localhost:5000;
-    server localhost:5001
-    server localhost:5002;
+events { worker_connections 1024; }
+
+http {
+
+    # List of application servers
+    upstream api_servers {
+        server localhost:5000;
+        server localhost:5001;
+        server localhost:5002;
+    }
+
+    # Configuration for the server
+    server {
+
+        # Running port
+        listen [::]:5100;
+        listen 5100;
+
+        # Proxying the connections
+        location / {
+            proxy_pass         http://api_servers;
+        }
+    }
 }
-
-server {
-    listen       80;
-    listen  [::]:80;
-    server_name  localhost;
-
-    location / {
-    proxy_pass http://loadbalancer;
-}}
