@@ -12,8 +12,11 @@
     networks:
       - name: "{{ docker_network_name }}"
     ports: 
-      - "5000:5000"
-  with_sequence: count=3
+      - "{{ item }}:5000"
+  loop:
+    - "5000"
+    - "5001"
+    - "5002"
 
 # - name: Create a network and connect containers
 #   docker_network:
