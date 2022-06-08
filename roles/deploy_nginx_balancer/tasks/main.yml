@@ -1,7 +1,10 @@
 ---
 # tasks file for deploy_nginx_balancer
 - name: Generate nginx conf
-  shell: mkdir -p /etc/nginx/conf.d
+  file:
+    path: /etc/nginx/conf.d
+    state: directory
+    recursive: yes
   template: src=templates/config.j2 dest=/etc/nginx/conf.d/main.conf
 
 - name: Start Nginx load balancer
