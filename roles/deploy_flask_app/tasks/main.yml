@@ -1,5 +1,9 @@
 ---
 # tasks file for deploy_flask_app
+- name: Create a network and connect containers
+  docker_network:
+    name: "{{ docker_network_name }}"
+
 - name: Start 3 load-balanced containers
   docker_container:
     name: "app-{{ item }}"
