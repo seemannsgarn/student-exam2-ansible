@@ -22,7 +22,7 @@ pipeline {
         }
         stage("check"){
             steps {
-                sh 'if [ $(curl -LI 192.168.56.3:5100 -o /dev/null -w '%{http_code}\n' -s) == "200" ]; then echo 0; fi'
+                sh 'if [ $(curl -LI 192.168.56.3:5100 -o /dev/null -w \'%{http_code}\n\' -s) == "200" ]; then echo 0; fi'
             }
             echo "DONE"
         }
