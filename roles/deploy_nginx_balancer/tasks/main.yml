@@ -7,7 +7,9 @@
     mode: '0755'
 
 - name: Generate config file from jinja
-    template: src=config.j2 dest=/etc/nginx/conf.d/main.conf mode=0555
+    template: 
+      src: config.j2 
+      dest: /etc/nginx/conf.d/main.conf
 
 - name: Start Nginx load balancer
   docker_container:
