@@ -6,10 +6,10 @@
     state: directory
     mode: '0755'
 
-- name: Copy file with owner and permissions
-  ansible.builtin.copy:
-    src: templates/default.conf
-    dest: /etc/nginx/conf.d/default.conf
+# - name: Copy file with owner and permissions
+#   ansible.builtin.copy:
+#     src: templates/default.conf
+#     dest: /etc/nginx/conf.d/default.conf
 
 - name: Generate config file from jinja
   template: 
@@ -27,5 +27,6 @@
       - /etc/nginx/conf.d:/etc/nginx/conf.d
     ports: 
       - "80:80"
+      - "5100:5100"
   
     
