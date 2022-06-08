@@ -12,7 +12,7 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("ansible") {
+        stage("ansible deploy app") {
             steps {
                 ansiblePlaybook( 
                 playbook: 'deploy_flask_app.yml',
@@ -22,9 +22,9 @@ pipeline {
         }
         stage("check"){
             steps {
-                echo "###################################"
-                echo "#                OK               #"
-                echo "###################################"
+                sh '''if [ $(curl -LI http://google.com -o /dev/null -w '%{http_code}\n' -s) == "200" ]; then 
+                        echo 0; 
+                      fi'''
             }
         }
     
