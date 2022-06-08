@@ -4,3 +4,4 @@
   roles:
     - install_docker
     - deploy_flask_app
+    - deploy_nginx_balancer

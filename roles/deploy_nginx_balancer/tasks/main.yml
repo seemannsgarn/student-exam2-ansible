@@ -1,2 +1,17 @@
 ---
 # tasks file for deploy_nginx_balancer
+- name: Generate nginx conf
+  template: src=templates/config.j2 dest=/etc/nginx/conf.d/main.conf
+
+- name: Start Nginx load balancer
+  docker_container:
+    name: "nginxBalancer"
+    recreate: yes
+    image: "nginx"
+    networks:
+      - name: "{{ docker_network_name }}"
+    volumes:
+      - /etc/nginx/conf.d
+    ports: 
+      - "80:80"
+    
