@@ -12,11 +12,11 @@
     dest: /etc/nginx/conf.d/default.conf
     mode: "0666"
 
-- name: Generate config file from jinja
-  template: 
-    src: config.j2 
-    dest: /etc/nginx/conf.d/balancer.conf
-    mode: "0666"
+# - name: Generate config file from jinja
+#   template: 
+#     src: config.j2 
+#     dest: /etc/nginx/conf.d/balancer.conf
+#     mode: "0666"
 
 - name: Start Nginx load balancer
   docker_container:
